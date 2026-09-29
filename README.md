@@ -1,8 +1,12 @@
+<p align="center"><img src="assets/modelscope-logo.png" alt="ModelScope 魔搭社区" width="400"></p>
+
 # ModelScope 组织成员批量添加工具
 
 `add_members.py` 通过本机已登录的 Google Chrome，把用户名单批量添加为 ModelScope 组织的「只读」成员。支持 `admin.modelscope.ai` 与 `admin.modelscope.cn` 两个站点的组织管理页。
 
 > **适用对象：ModelScope 组织管理员（admin）。** 本工具操作的是 ModelScope 管理后台（`admin.modelscope.ai` / `admin.modelscope.cn`）的组织成员管理页，**只有目标组织的管理员**才能使用——运行前提就是用管理员账号登录后台并打开自己组织的成员弹窗。普通成员账号没有该页面的操作权限，工具无法也无意为普通用户提供任何组织管理能力；请不要对不属于自己的组织使用。
+
+> **先打开页面，再运行脚本。** 本工具完全依靠网页前端信息（DOM 元素）定位弹窗、搜索框和按钮，它自己**不会打开网页、也不会登录**——运行时操作的就是 Chrome 里**当前已经打开**的「组织成员」弹窗。因此必须先完成下方「准备」的第 2 步：在 Chrome 打开目标组织的组织管理页、点开「组织成员」弹窗、把角色选为「只读」，然后再运行 `run.sh` 或 `add_members.py`。成员弹窗未打开或角色不是「只读」时，脚本会直接停止并提示。
 
 ## 工作原理
 
@@ -18,10 +22,10 @@
 - Chrome 菜单「查看 → 开发者 → 允许 Apple 事件中的 JavaScript」已勾选；
 - 已登录 ModelScope 管理后台，并拥有目标组织的管理权限。
 
-## 准备
+## 准备（运行前必做）
 
 1. 准备用户名单文件（如 `members.txt`），每行一个用户名；空行、`#` 开头的行和重复用户名会自动忽略（格式见 `members.example.txt`）。
-2. 在 Chrome 打开目标组织的组织管理页（`https://admin.modelscope.ai/organization?name=组织名`，cn 站把 `ai` 换成 `cn`），点开「组织成员」弹窗，并把角色选择为「只读」。
+2. **在 Chrome 打开目标组织的组织管理页**（`https://admin.modelscope.ai/organization?name=组织名`，cn 站把 `ai` 换成 `cn`），**点开「组织成员」弹窗，并把角色选择为「只读」**——脚本只在这套已经打开的页面上工作，这一步没做脚本无法运行。
 
 ## 一键启动（推荐）
 
@@ -83,3 +87,4 @@ python3 add_members.py members.txt --org 组织名 --site cn  # cn 站
 | `add_members.py` | 主脚本 |
 | `members.example.txt` | 名单文件格式示例 |
 | `.gitignore` | 排除运行报告与真实名单 |
+| `assets/modelscope-logo.png` | README 顶部标志（取自魔搭官方品牌元素页） |
