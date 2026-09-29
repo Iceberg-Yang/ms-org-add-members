@@ -1,0 +1,11 @@
+# 运行报告（含真实用户信息，禁止提交）
+bulk-add-report-*.json
+
+# 真实名单文件
+members*.txt
+!members.example.txt
+
+# Python / macOS 杂项
+__pycache__/
+*.pyc
+.DS_Store

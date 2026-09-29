@@ -1,0 +1,5 @@
+# 每行一个 ModelScope 用户名（登录用户名，非显示昵称）
+# 空行与 # 开头的行会被忽略，重复用户名自动去重
+example-user-1
+example-user-2
+example-user-3
