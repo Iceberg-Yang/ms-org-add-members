@@ -88,3 +88,4 @@ python3 add_members.py members.txt --org 组织名 --site cn  # cn 站
 | `members.example.txt` | 名单文件格式示例 |
 | `.gitignore` | 排除运行报告与真实名单 |
 | `assets/modelscope-logo.png` | README 顶部标志（取自魔搭官方品牌元素页） |
+| `LICENSE` | MIT 开源协议 |
